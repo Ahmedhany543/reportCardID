@@ -1,0 +1,189 @@
+{
+	"استمارات":
+
+			{
+				"المركز الرئيسى 1":{
+					"code":1910,
+					"name": "استمارات - ديوان القطاع",
+					"DeployDate":"1-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"سجل نموذجى العاصمة الادارية":{
+					"code":1912,
+					"name": "استمارات - سجل العاصمة الادارية",
+					"DeployDate":"1-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"مول سيتى سنتر الماظة":{
+					"code":1920,
+					"name": "استمارات - مول سيتى سنتر الماظة",
+					"DeployDate":"10-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"مول مكسيم":{
+					"code":1921,
+					"name": "استمارات - مول مكسيم",
+					"DeployDate":"10-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"مول كارفور المعادى":{
+					"code":1922,
+					"name": "استمارات - مول سيتى سنتر المعادى",
+					"DeployDate":"11-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"سجل مدينة نصر اول":{
+					"code":1924,
+					"name": "استمارات - سجل مدينة نصر اول",
+					"DeployDate":"18-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"مول سيتى ستارز":{
+					"code":1928,
+					"name": "استمارات - مول سيتى ستارز",
+					"DeployDate":"18-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"مطار القاهرة الدولى":{
+					"code":1929,
+					"name": "استمارات - مطار القاهرة",
+					"DeployDate":"18-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"مركز اصدار الاسكندرية":{
+					"code":2706,
+					"name": "استمارات - مركز اصدار الاسكندرية",
+					"DeployDate":"25-12-2023",
+					"RemoveDate":"31-1-2024",
+					"Status": "Inactive"
+				},
+				"مول سيتى سنتر اسكندرية":{
+					"code":2707,
+					"name": "استمارات - مول سيتى سنتر اسكندرية",
+					"DeployDate":"25-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"مول العرب":{
+					"code":4110,
+					"name": "استمارات - مول العرب",
+					"DeployDate":"6-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"مول مصر 6 اكتوبر":{
+					"code":4111,
+					"name": "استمارات - مول مصر",
+					"DeployDate":"6-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"سجل الهرم النموذجى":{
+					"code":4112,
+					"name": "استمارات - سجل الهرم النموذجى",
+					"DeployDate":"20-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"سجل داندي مول احوال اكسبرس":{
+					"code":4113,
+					"name": "استمارات - سجل داندي مول",
+					"DeployDate":"19-12-2023",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"أحوال اكسبريس الشرقية":{
+					"code":7801,
+					"name": "استمارات - سجل العاصمة الادارية",
+					"DeployDate":"14-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"أحوال اكسبريس المنصورة":{
+					"code":6102,
+					"name": "استمارات - اكسبريس المنصورة",
+					"DeployDate":"17-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"سجل منتزه اول":{
+					"code":2710,
+					"name": "استمارات - سجل منتزه اول",
+					"DeployDate":"31-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"سجل جرين بلازا":{
+					"code":2709,
+					"name": "استمارات - سجل جرين بلازا",
+					"DeployDate":"31-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"سجل النزهة":{
+					"code":1925,
+					"name": "استمارات - سجل النزهة",
+					"DeployDate":"18-12-2023",
+					"RemoveDate":"18-1-2024",
+					"Status": "Inactive"
+				},
+				"ادارة الاحوال المدنية الاميرية ": {
+					"code":1923,
+					"name": "استمارات - أدارة القاهرة",
+					"DeployDate":"17-12-2023",
+					"RemoveDate":"18-1-2024",
+					"Status": "Inactive"
+				},
+				"شركة سيتك - اختبار":{
+					"code":9999,
+					"name": "استمارات - سجل العاصمة الادارية",
+					"DeployDate":"",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"اصدار سوهاج":{
+					"code":9102,
+					"name": "استمارات - اصدار سوهاج",
+					"DeployDate":"29-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"سجل محطة اصدار المنيا":{
+					"code":7503,
+					"name": "استمارات - المركز النموذجى اصدار المنيا",
+					"DeployDate":"29-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				}
+			},
+
+"شهادات"  : {
+			"شركة سيتك - اختبار":{
+					"code":9999,
+					"name": "CITCKIOSK",
+					"DeployDate":"",
+					"RemoveDate":"",
+					"Status": "Active"
+				}
+
+},
+"قيدعائلى": {
+			"شركة سيتك - اختبار":{
+					"code":9999,
+					"name": "CITCKIOSK",
+					"DeployDate":"",
+					"RemoveDate":"",
+					"Status": "Active"
+				}
+
+}
+}
+
