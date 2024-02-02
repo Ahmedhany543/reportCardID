@@ -114,20 +114,6 @@
 					"RemoveDate":"",
 					"Status": "Active"
 				},
-				"سجل منتزه اول":{
-					"code":2710,
-					"name": "استمارات - سجل منتزه اول",
-					"DeployDate":"31-1-2024",
-					"RemoveDate":"",
-					"Status": "Active"
-				},
-				"سجل جرين بلازا":{
-					"code":2709,
-					"name": "استمارات - سجل جرين بلازا",
-					"DeployDate":"31-1-2024",
-					"RemoveDate":"",
-					"Status": "Active"
-				},
 				"سجل النزهة":{
 					"code":1925,
 					"name": "استمارات - سجل النزهة",
@@ -160,6 +146,27 @@
 					"code":7503,
 					"name": "استمارات - المركز النموذجى اصدار المنيا",
 					"DeployDate":"29-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"سجل سموحه النموذجى":{
+					"code":2708,
+					"name": "استمارات - سجل سموحه النموذجى",
+					"DeployDate":"31-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				"سجل جرين بلازا":{
+					"code":2709,
+					"name": "استمارات - سجل جرين بلازا",
+					"DeployDate":"31-1-2024",
+					"RemoveDate":"",
+					"Status": "Active"
+				},
+				" سجل منتزه اول":{
+					"code":2710,
+					"name": "استمارات - سجل منتزه اول",
+					"DeployDate":"31-1-2024",
 					"RemoveDate":"",
 					"Status": "Active"
 				}

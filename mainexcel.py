@@ -2,7 +2,11 @@ import pandas as pd
 import glob
 from tabulate import tabulate
 from func import is_working_day, calculate_comm, read_json, check_machine_status, calculate_actual_comm
+# from openpyxl.styles import Font, Color, Alignment, Border, Side
+from openpyxl import load_workbook
+from openpyxl.utils.dataframe import dataframe_to_rows
 
+formatted_date = ""
 data_path = 'data.json'
 folder_path = glob.glob("excel files/*.xls")
 combined_df = pd.DataFrame()
@@ -12,10 +16,11 @@ for file in folder_path:
     combined_df = pd.concat([combined_df, df], ignore_index=True)
 
 combined_df = combined_df[combined_df['حالة الطباعة'] != 'ملغية']
+combined_df = combined_df[combined_df['كود الماكينة'] != 9999]
 combined_df["تاريخ الاصدار"] = pd.to_datetime(combined_df["تاريخ الاصدار"])
 arabic_columns = list(combined_df.columns)
 # print(arabic_columns)
-
+machines_list = list(combined_df['كود الماكينة'].unique())
 english_columns = ["#", "Location", "Machine Code", "Document Type", "Document Number", "Document Owner", "Issue Date",
                    "Applicant", "Kinship", "Printing Status"]
 combined_df.columns = english_columns
@@ -97,20 +102,41 @@ print(table)
 total_comm_sum = merged_df['Actual Comm'].sum()
 print(f"Total CITC Commission is {total_comm_sum}")
 
+# Calculate total commission per machine
 comm_per_machine = merged_df.groupby(['Code_Location'])['Actual Comm'].sum()
-
-grouped = merged_df.groupby(['Code_Location', ])
+df_comm_per_machine = comm_per_machine.reset_index().rename(columns={'index': 'Code_Location', 0: 'Actual Comm'})
+print(comm_per_machine)
+grouped = merged_df.groupby(['Code_Location'])
 
 # Create an Excel writer object
-excel_writer = pd.ExcelWriter('output_file8.xlsx', engine='xlsxwriter')
-comm_per_machine.to_excel(excel_writer, sheet_name="Total")
+excel_writer = pd.ExcelWriter('input.xlsx', engine='xlsxwriter')
+df_comm_per_machine.to_excel(excel_writer, sheet_name="Total", startrow=3, startcol=2)
+workbook = excel_writer.book
+worksheet = excel_writer.sheets["Total"]
+# Formatting worksheet
+worksheet.add_table(2, 2, 22, 4)
+# worksheet.merge_range(0, 2, 2, 4, f"Summary of Month {formatted_date}", workbook.add_format(
+#     {'bold': True, 'align': 'center', 'valign': 'vcenter', 'color': 'white', 'fg_color': 'black', 'size': 16}))
+
+
 # Iterate over groups and save each DataFrame to a separate sheet
 for group_name, group_df in grouped:
-    # Save each DataFrame to a separate sheet with the name of the group
-    group_df = group_df._append(pd.Series({"Actual Comm": group_df["Actual Comm"].sum()}), ignore_index=True)
-    # group_df = pd.concat((group_df, pd.DataFrame({"Actual Comm": group_df["Actual Comm"].sum()})), ignore_index=True)
-    group_df.to_excel(excel_writer, sheet_name=group_df.iloc[0]["Code_Location"][:31], index=False)
+    # Split Code_Location into Code and Location
+    group_df[['Code', 'Location']] = group_df['Code_Location'].str.split('_', expand=True)
+
+    # Reorder columns
+    new_order = ['Code_Location', 'Code', 'Location', 'Machine Status', 'dateformat', 'DayName', 'DayStatus', 'comm',
+                 'Actual Comm', 'Day']
+    group_df = group_df[new_order]
+
+    # Drop unnecessary columns
+    group_df = group_df.drop(['Code_Location', 'Day'], axis=1)
+
+    # Calculate and append the total Actual Comm for the group
+    total = group_df['Actual Comm'].sum()
+    group_df = group_df._append({'Actual Comm': total}, ignore_index=True)
+
+    # Save each DataFrame to a separate sheet with the name of the Code
+    group_df.to_excel(excel_writer, sheet_name=group_df.iloc[0]["Code"], index=False)
 
 excel_writer.close()
-
-print(comm_per_machine)
