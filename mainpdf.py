@@ -1,7 +1,8 @@
 import pandas as pd
 import glob
 from tabulate import tabulate
-from func import is_working_day, calculate_comm, read_json, check_machine_status, calculate_actual_comm
+from weasyprint import HTML
+from func import is_working_day, read_json, check_machine_status, calculate_actual_comm
 
 
 # Functions
@@ -95,7 +96,48 @@ merged_df["النسبة 50"] = merged_df['استمارة فئة 50 جنيه'] * 
 merged_df['اجمالى النسبة'] = (merged_df[['النسبة 50', 'النسبة 175', 'النسبة 125']].sum(axis=1))
 merged_df['اجمالى نسبة سيتك'] = merged_df.apply(
     lambda a: calculate_actual_comm(a['اجمالى النسبة'], a['حالة الماكينة'], a['حالة اليوم'], 400.0), axis=1)
-print(show_table(merged_df))
+# print(show_table(merged_df))
 total_comm_sum = merged_df['اجمالى نسبة سيتك'].sum()
-print(f"Total CITC Commission is {total_comm_sum}")
+# print(f"Total CITC Commission is {total_comm_sum}")
 
+# Creating DataFrame for each machine and generating Report as PDF file
+grouped = merged_df.groupby(['الموقع'])
+
+# Creating HTML from Megred DataFrame
+
+
+header = list(merged_df.columns)
+table_header = ""
+for h in header:
+    text = f"<th>{h}</th>"
+    table_header = table_header + text
+# print(table_header)
+
+table_content = ""
+# print(merged_df)
+for index, row in merged_df.iterrows():
+    table_content = table_content + f"<tr>"
+    for cell in row:
+        table_content = table_content + f"<td>{cell}</td>"
+    table_content = table_content + f"</tr>"
+# print(table_content)
+
+html_content = (f"<html>"
+                f"<meta http-equiv='Content-type' content='text/html; charset=UTF-8' />"
+                f"<head><style>@page {{size: A4 landscape;margin: 20px;@top-center {{content: 'Table Header';}}}}"
+                f"body{{direction: rtl;}}"
+                f"table{{border-collapse: collapse;}}table,tr,th,td{{border: solid 1px}}"
+                f"th{{direction: rtl;text-align:center;width:auto}}</style></head>"
+                f"<body>"
+                f"<table>"
+                f"{table_header}"
+                f"{table_content}"
+                f"</table>"
+                f"</body>"
+                f"</html>")
+# Save HTML content to a file
+with open("table.html", "w", encoding="utf-8") as html_file:
+    html_file.write(html_content)
+
+# Generate PDF from HTML
+HTML(string=html_content).write_pdf("table.pdf")
